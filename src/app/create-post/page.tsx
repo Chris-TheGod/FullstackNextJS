@@ -1,9 +1,11 @@
+import { createPost } from '@/actions/actions';
+
 export default function Page() {
   return (
     <main className='pt-16 text-center'>
       <h1 className='text-5xl font-semibold mb-7'>Create post</h1>
 
-      <form className='h-10 space-x-2 mt-10'>
+      <form action={createPost} className='h-10 space-x-2 mt-10'>
         <input
           type='text'
           name='title'
