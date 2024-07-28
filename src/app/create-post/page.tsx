@@ -1,13 +1,7 @@
 import { createPost } from '@/actions/actions';
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import { redirect } from 'next/navigation';
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
 
 export default async function Page() {
-  const { isAuthenticated } = getKindeServerSession();
-  if (!(await isAuthenticated())) {
-    redirect('/api/auth/login?post_login_redirect_url=/create-post');
-  }
-
   return (
     <main className='pt-16 text-center'>
       <h1 className='text-5xl font-semibold mb-7'>Create post</h1>
@@ -24,6 +18,8 @@ export default async function Page() {
           Submit
         </button>
       </form>
+
+      <LogoutLink>Log out</LogoutLink>
     </main>
   );
 }
